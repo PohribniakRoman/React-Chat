@@ -1,0 +1,46 @@
+.sidebar {
+  width: 17%;
+  height: 100vh;
+  min-width: 375px;
+  border-right: 1px solid #000;
+  &__nav{
+      display: flex;
+      width: 88%;
+      justify-content: space-between;
+      margin: 0 auto;
+  }
+  &__menu {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right:20px;
+    & span {
+      display: flex;
+      position: relative;
+      width: 15px;
+      height: 2px;
+      background-color: grey;
+
+      &::before,
+      &::after {
+        margin-top: -5px;
+        content: "";
+        width: 15px;
+        height: 2px;
+        background-color: grey;
+        position: absolute;
+      }
+      &::before {
+        margin-top: 5px;
+      }
+    }
+  }
+}
+.chat {
+  width: 83%;
+  height: 100vh;
+}
+.home {
+  display: flex;
+}
