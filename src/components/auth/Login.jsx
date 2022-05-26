@@ -1,6 +1,7 @@
 import { Button } from "react-bootstrap";
 import { Col, Container, FloatingLabel, Form, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { ENDPOINTS } from "../../ENDPOINTS";
 
 export default function Login() {
   return (
@@ -14,6 +15,13 @@ export default function Login() {
           <Form
             onSubmit={(e) => {
               e.preventDefault();
+              fetch(ENDPOINTS.host + ENDPOINTS.login, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({name:"Roman",password:"1111"}),
+              });
             }}
           >
             <FloatingLabel controlId="login" label="login" className="mb-4">
