@@ -1,9 +1,14 @@
 import { Button } from "react-bootstrap";
 import { Col, Container, FloatingLabel, Form, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ENDPOINTS } from "../../ENDPOINTS";
+import SendData from "../../hooks/SendData";
+import Cookies from 'universal-cookie';
 
 export default function Login() {
+  const navigate = useNavigate()
+  const cookies = new Cookies();
+
   return (
     <Container>
       <Row
@@ -13,15 +18,13 @@ export default function Login() {
         <Col md="4">
           <h1 className="mb-3">React Chat</h1>
           <Form
-            onSubmit={(e) => {
+            onSubmit={async (e) => {
               e.preventDefault();
-              fetch(ENDPOINTS.host + ENDPOINTS.login, {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({name:"Roman",password:"1111"}),
-              });
+              const resp = await (await SendData(ENDPOINTS.HOST + ENDPOINTS.LOGIN,{name:e.target.login.value.toLowerCase(),password:e.target.password.value.toLowerCase()})).json()
+              if(resp.authorized){
+                navigate("../home",{replace:true})
+                cookies.set("token",resp.token,{maxAge:604800,path: '/'})
+              }
             }}
           >
             <FloatingLabel controlId="login" label="login" className="mb-4">

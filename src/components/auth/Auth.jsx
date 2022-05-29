@@ -1,9 +1,11 @@
 import { Button } from "react-bootstrap";
 import { Col, Container, FloatingLabel, Form, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ENDPOINTS } from "../../ENDPOINTS";
+import SendData from "../../hooks/SendData";
 
 export default function Register() {
+  const navigate = useNavigate();
   return (
     <Container>
       <Row
@@ -13,15 +15,12 @@ export default function Register() {
         <Col md="4">
           <h1 className="mb-3">React Chat</h1>
           <Form
-            onSubmit={(e) => {
+            onSubmit={async (e) => {
               e.preventDefault();
-              fetch(ENDPOINTS.host + ENDPOINTS.register, {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({name:"Roman",password:"1111"}),
-              });
+              const resp = await (await SendData(ENDPOINTS.HOST + ENDPOINTS.REGISTER,{name:e.target.login.value.toLowerCase(),password:e.target.password.value.toLowerCase()})).json()
+              if(resp.authorized){
+                navigate("../login",{replace:true})
+              }
             }}
           >
             <FloatingLabel controlId="login" label="login" className="mb-4">

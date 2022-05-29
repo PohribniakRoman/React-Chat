@@ -1,5 +1,6 @@
 export const ENDPOINTS = {
-    host:"http://localhost:5000",
-    login:"/login",
-    register:"/auth"
+    HOST:"http://localhost:5000",
+    LOGIN:"/login",
+    REGISTER:"/auth",
+    SESSION:"/session"
 }
