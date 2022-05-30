@@ -1,0 +1,48 @@
+.chat {
+    width: 83%;
+    height: 100vh;
+    background-image: url(https://i.pinimg.com/originals/fa/47/a2/fa47a2ea39b1a6cd36bedec8b811d982.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    &__header{
+        height: 5%;
+        min-height: 55px;
+        width: 100%;
+        background-color: #ffffff;
+        position: relative;
+        &::before{
+            content: "";
+            position: absolute;
+            top: 100%;
+            right: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: lightgray;
+        }
+    }
+    &__body{
+        height: 800px;
+    }
+    &__footer{
+        min-height: 45px;
+        position: relative;
+        height: 5%;
+        width: 100%;
+        background-color: #ffffff;
+        &::before{
+            content: "";
+            position: absolute;
+            bottom: 100%;
+            right: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: lightgray;
+        }
+    }
+}

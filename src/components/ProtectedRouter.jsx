@@ -5,7 +5,7 @@ import { ENDPOINTS } from "../ENDPOINTS";
 import SendData from "../hooks/SendData";
 
 export default function ProtectedRouter({ component: Component, ...rest }) {
-  const [isAuthorized, updateAuthorizedStatus] = useState(null);
+  const [isAuthorized, updateAuthorizedStatus] = useState(true);
   useEffect(() => {
     async function checkToken() {
       const cookie = new Cookies();

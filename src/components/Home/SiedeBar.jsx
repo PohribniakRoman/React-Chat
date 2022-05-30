@@ -18,6 +18,7 @@ export default function SideBar() {
           type="password"
           size="sm"
           id="search"
+          style={{backgroundColor:"#f5f5f5",border:"none"}}
           placeholder="Search"
         />
       </div>
