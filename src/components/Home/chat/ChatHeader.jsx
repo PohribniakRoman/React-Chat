@@ -27,8 +27,6 @@ return <div className="chat__header">
         <Offcanvas.Header>
           <Offcanvas.Title>{name}</Offcanvas.Title>
         </Offcanvas.Header>
-        <Offcanvas.Body>
-        </Offcanvas.Body>
       </Offcanvas>
 
     </div>;
