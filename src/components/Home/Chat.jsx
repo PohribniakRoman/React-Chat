@@ -4,7 +4,7 @@ import ChatHeader from "./chat/ChatHeader";
 
 export default function Chat() {
     return <div className="chat">
-        <ChatHeader/>
+        <ChatHeader name={"Alisa"} onlineStatus={"last seen recently"}/>
         <ChatBody/>
         <ChatFooter/>
     </div>
