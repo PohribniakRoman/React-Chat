@@ -6,10 +6,12 @@ import { FcSettings } from 'react-icons/fc';
 import { FcImport } from 'react-icons/fc';
 import { BsDot } from 'react-icons/bs';
 import { FcNightPortrait } from 'react-icons/fc';
+import Cookies from "universal-cookie";
+import { useNavigate } from "react-router-dom";
 
 export default function Menu() {
   const [modalShow, setModalShow] = useState([false,null]);
-
+  const navigate = useNavigate();
   return (
     <>
       <Offcanvas.Header>
@@ -26,7 +28,11 @@ export default function Menu() {
           <li onClick={() => setModalShow([true,"contacts"])}><FcContacts/> Contacts</li>
           <li onClick={() => setModalShow([true,"settings"])}><FcSettings/> Settings</li>
           <li ><FcNightPortrait/> Night mode</li>
-          <li><FcImport/> Log out</li>
+          <li onClick={()=>{
+            const cookies = new Cookies();
+            cookies.remove("token");
+            navigate("../login",{replace:true})
+          }}><FcImport/> Log out</li>
         </ul>
       </Offcanvas.Body>
 
