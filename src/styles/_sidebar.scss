@@ -46,3 +46,16 @@
       }
     }
   }
+.searchlist{
+  width: 100%;
+  position: absolute;
+  background-color: #fff;
+  z-index: 100;
+  &__item{
+    padding: 10px 0;
+    font-size: 16px;
+    &::first-letter{
+      text-transform: uppercase;
+    }
+  }
+}
